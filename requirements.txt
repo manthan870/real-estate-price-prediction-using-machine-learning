@@ -2,5 +2,4 @@ pandas
 numpy
 seaborn
 matplotlib
-scikit-learn
--e .
+scikit-learn==1.1.3
