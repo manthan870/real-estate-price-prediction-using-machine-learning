@@ -1,0 +1,247 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f2f2f2; /* Off-white background color */
+    color: #333;
+}
+
+        .header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            color: #fff;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 60px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .property-text {
+            color: #8B4513;
+            animation: slide-in-left 1s forwards;
+        }
+
+        .hub-text {
+            color: #000;
+            animation: slide-in-right 1s forwards;
+        }
+
+        .black-strip {
+            height: 50px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            padding: 0 20px;
+            animation: fade-in 2s forwards;
+        }
+
+        .links {
+            display: flex;
+            align-items: center;
+        }
+
+        .link {
+            color: #fff;
+            margin: 0 10px;
+            opacity: 0;
+            animation: link-fade-in 2s forwards;
+            transition: color 0.3s;
+        }
+
+        .link a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            color: red;
+        }
+
+        .login-link {
+            margin-left: auto;
+        }
+
+        .project-info {
+            padding: 50px 0;
+            background-color: #ffffff;
+        }
+
+        .project-info h2 {
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+
+        .contact-section {
+            padding: 50px 0;
+            background-color: #e9eff7;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 20px;
+            color: #1a73e8;
+        }
+
+        .contact-section .btn {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .contact-section .btn:hover {
+            background-color: #1a73e8;
+            transform: translateY(-3px);
+            color: #fff;
+        }
+
+        .contact-section .btn:hover i.fa-whatsapp {
+            color: #25D366; /* WhatsApp brand color */
+        }
+
+        .contact-section .btn:hover i.fa-instagram {
+            color: #E1306C; /* Instagram brand color */
+        }
+        .form-div {
+    margin: 30px 10%;
+    border: 1px solid #e0e0e0; /* Light grey border */
+    padding: 30px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    animation: fadeInUp 1s forwards; /* Fade-in animation */
+}
+
+/* Styling the input fields on hover */
+.form-control:hover, .form-control:focus {
+    border-color: #1a73e8; /* Blue border on hover */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1); /* Shadow on hover */
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+        .input-box {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+
+        .predict-button {
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .message-box {
+    width: 100%;
+    max-width: 400px;
+    height: 100px;  /* Reduced the height */
+    margin: 30px auto;
+    border: 1px solid #e0e0e0;  /* Lighter border color */
+    padding: 10px;
+}
+        @keyframes slide-in-left {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slide-in-right {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes link-fade-in {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-section {
+    background-color: #f2f2f2; /* Changing the background to offwhite */
+    display: flex;
+    padding: 20px 50px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+img { /* Adjusting the image width */
+    max-width: 450px; /* Increased from 300px to 450px, adjust as needed */
+    width: 100%;
+}
+
+.info-text {
+    flex-basis: 45%; /* Reduced the flex-basis slightly to compensate for the increased image size */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 30px;
+}
+
+    .dialogue {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    opacity: 0;
+    white-space: nowrap;
+    animation: fadeInFadeOut 27s infinite; /* Loop the animation infinitely */
+}
+
+@keyframes fadeInFadeOut {
+    0%, 80%, 100% { opacity: 0; }
+    20%, 60% { opacity: 1; }
+}
+
+.dialogue:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.dialogue:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.dialogue:nth-child(3) {
+    animation-delay: 2s;
+}
+
+.dialogue:nth-child(4) {
+    animation-delay: 3s;
+}
+
+.dialogue:nth-child(5) {
+    animation-delay: 4s;
+}
+
+
+.predict-button {
+    width: auto;  /* Resetting the width to auto will make the button adapt to its content size */
+    margin: 20px auto; /* Adding some margin for spacing */
+}

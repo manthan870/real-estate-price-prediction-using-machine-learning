@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: aliceblue;
+}
+
+.contact-container {
+    width: 400px;
+    border-radius: 10px;
+    padding: 2rem;
+    margin: auto;
+    --border-size: 0.3rem;
+    border: var(--border-size) solid transparent;
+    /* Paint an image in the border */
+    border-image: conic-gradient(from var(--angle), #d53e33 0deg 90deg, #fbb300 90deg 180deg, #377af5 180deg 270deg, #399953 270deg 360deg) 1 stretch;
+    background: rgb(255 255 255 / var(--opacity));
+   
+}
+
+@supports (background: paint(houdini)) {
+    @property --opacity {
+        syntax: "<number>";
+        initial-value: 0.5;
+        inherits: false;
+    }
+
+    @property --angle {
+        syntax: "<angle>";
+        initial-value: 0deg;
+        inherits: false;
+    }
+
+    @keyframes opacityChange {
+        to {
+            --opacity: 1;
+        }
+    }
+
+    @keyframes rotate {
+        to {
+            --angle: 360deg;
+        }
+    }
+
+    .contact-container {
+        animation: rotate 4s linear infinite, opacityChange 3s infinite alternate;
+    }
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/signupstyle.css">
+    <script src="script/signupscript.js" defer></script>
+
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2>Sign Up</h2>
+        <input type="text" id="signupUsername" class="login-input" placeholder="Username" required>
+        <input type="text" id="name" class="login-input" placeholder="Name" required pattern="[a-zA-Z\s]+">
+        <input type="email" id="email" class="login-input" placeholder="Email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+
+        <!-- Password input with toggle -->
+        <div class="password-wrapper">
+            <input type="password" id="password" class="login-input" placeholder="Password" required pattern=".{8,}">
+            <span class="toggle-password" onclick="togglePasswordVisibility()">👁</span>
+        </div>
+
+        <input type="password" id="confirmPassword" class="login-input" placeholder="Confirm Password" required>
+        <button class="login-btn" id="create_button" onclick="createAccount()">Create Account</button>
+    </div>
+
+    <a class="btn btn-primary back-btn" onclick="window.history.back();">Back</a>
+
+    
+
+</body>
+
+</html>

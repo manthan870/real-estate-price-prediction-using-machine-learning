@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/loginstyle.css">
+    <script src="script/loginscript.js" defer></script>
+
+</head>
+
+<body>
+
+    <div class="login-container">
+        <h2>Welcome Back</h2>
+        <input type="text" id="username" class="login-input" placeholder="Username" required>
+        <div style="position:relative;">
+            <input type="password" id="password" class="login-input" placeholder="Password" required>
+            <div class="password-toggle" onclick="togglePasswordVisibility()">
+                <i id="toggleIcon" style="cursor: pointer; color: #aaa;">&#x1f441;</i>
+            </div>
+        </div>
+        <button class="login-btn" id="login_button" onclick="login()">Login</button>
+        <a href="signup.html" class="signup-link">Don't have an account? Sign up!</a>
+    </div>
+
+    <a class="btn btn-primary back-btn" onclick="window.history.back();">Back</a>
+
+    
+
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+body {
+    background-color: #f4f6f8; /* Light pleasant background color */
+}
+
+.back-button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+/* Hover effects for list-group items */
+.list-group-item-action:hover {
+    background-color: #e0e8ed; /* Slight tint on hover */
+    transform: translateX(5px); /* Move the item slightly to the right */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Animation for card hover */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.alert {
+opacity: 0;
+max-height: 0;
+overflow: hidden;
+transform: translateY(-30px);
+transition: opacity 0.5s ease, transform 0.5s ease, max-height 0.5s ease;
+}
+
+/* When the alert gets the 'show' class, these styles will be applied */
+.alert.show {
+opacity: 1;
+max-height: 100px;  /* Approximate maximum height for the alert */
+transform: translateY(0);
+}
