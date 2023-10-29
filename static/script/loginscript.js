@@ -22,7 +22,7 @@ if (username && password) {
 alert('Logged in as ' + username);
 
 // Redirect the user to another page
-window.location.href = "user.html";
+window.location.href = "user";
 
 } else {
 alert('Please enter both username and password');

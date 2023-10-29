@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PropertyHub</title>
+    <title>PropertyHub(test)</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="static/style/userstyle.css">
@@ -42,57 +42,59 @@
             <div class="dialogue">Thrust our algorithm like many did</div>
         </div>
         <div>
-            <img src="image/image1.png" alt="PropertyHub Image" width="300">
+            <img src="static/image/image1.png" alt="PropertyHub Image" width="300">
         </div>
     </div>
 
    <div class="form-div">
-    <form>
-        <!-- Removed the Bootstrap column class and left each input inside its form-row. This will make them stack vertically. -->
+    <form action="{{url_for('predict')}}" method="post">
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="CRIM">
-        </div>
+            <input type="text" class="form-control" name="CRIM" placeholder="CRIM" required="required" /><br>
+    	</div>
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="ZN">
-        </div>
+            <input type="text" class="form-control" name="ZN" placeholder="ZN" required="required" /><br>
+        </div>                
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="INDUS">
-        </div>
+            <input type="text" class="form-control" name="INDUS" placeholder="INDUS" required="required" /><br>
+        </div>                    
+        <div class="form-row input-box">    
+            <input type="text" class="form-control" name="CHAS" placeholder="CHAS" required="required" /><br>
+        </div>                    
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="CHAS">
-        </div>
+            <input type="text" class="form-control" name="NOX" placeholder="NOX" required="required" /><br>
+        </div>                    
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="NOX">
-        </div>
+            <input type="text" class="form-control" name="RM" placeholder="RM" required="required" /><br>
+        </div>                    
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="RM">
-        </div>
+            <input type="text" class="form-control" name="Age" placeholder="Age" required="required" /><br>
+        </div>                    
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="AGE">
-        </div>
+            <input type="text" class="form-control" name="DIS" placeholder="DIS" required="required" /><br>
+        </div>                    
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="DIS">
-        </div>
+            <input type="text" class="form-control" name="RAD" placeholder="RAD" required="required" /><br>
+        </div>                    
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="RAD">
-        </div>
+            <input type="text" class="form-control" name="TAX" placeholder="TAX" required="required" /><br>
+        </div>                    
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="TAX">
-        </div>
+            <input type="text" class="form-control" name="PTRATIO" placeholder="PTRATIO" required="required" /><br>
+        </div>                    
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="PTRATIO">
-        </div>
+            <input type="text" class="form-control" name="B" placeholder="B" required="required" /><br>
+        </div>                    
         <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="B">
-        </div>
-        <div class="form-row input-box">
-            <input type="text" class="form-control" placeholder="LSTAT">
-        </div>
+            <input type="text" class="form-control" name="LSTAT" placeholder="LSTAT" required="required" /><br>
+        </div>                
+
         <button type="submit" class="btn btn-primary predict-button">Predict</button>
     </form>
+    <br>
+    <br>
 
     <div class="message-box rounded p-3 bg-white shadow-sm">
-        <!-- Content goes here -->
+        {{ prediction_text }}
     </div>
 </div>
 

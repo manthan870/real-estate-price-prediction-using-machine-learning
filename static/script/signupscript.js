@@ -33,5 +33,5 @@ return;
 alert('Account Created for ' + username + '!');
 
 // Redirect the user to another page
-window.location.href = "user.html";
+window.location.href = "user";
 }

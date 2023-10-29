@@ -6,26 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style/loginstyle.css">
-    <script src="script/loginscript.js" defer></script>
+    <link rel="stylesheet" href="static/style/loginstyle.css">
+    <script src="static/script/loginscript.js" defer></script>
 
 </head>
 
 <body>
-
+<form id="login_form" method="POST" action="{{url_for('login')}}">
     <div class="login-container">
         <h2>Welcome Back</h2>
-        <input type="text" id="username" class="login-input" placeholder="Username" required>
+        <input type="text" id="username" name="username" class="login-input" placeholder="Username" required>
         <div style="position:relative;">
-            <input type="password" id="password" class="login-input" placeholder="Password" required>
+            <input type="password" id="password" name="password" class="login-input" placeholder="Password" required>
             <div class="password-toggle" onclick="togglePasswordVisibility()">
                 <i id="toggleIcon" style="cursor: pointer; color: #aaa;">&#x1f441;</i>
             </div>
         </div>
         <button class="login-btn" id="login_button" onclick="login()">Login</button>
-        <a href="signup.html" class="signup-link">Don't have an account? Sign up!</a>
+        <a href="signup" class="signup-link">Don't have an account? Sign up!</a>
     </div>
-
+</form>
     <a class="btn btn-primary back-btn" onclick="window.history.back();">Back</a>
 
     
