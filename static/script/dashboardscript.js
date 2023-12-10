@@ -1,23 +1,19 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const savedPicture = localStorage.getItem('profilePicture');
-    if (savedPicture) {
-        document.getElementById('profilePicture').src = savedPicture;
-    }
-});
 
-$('.custom-file-input').on('change', function() {
-    var fileName = $(this).val().split('\\').pop();
-    $(this).siblings('.custom-file-label').addClass("selected").html(fileName);
-});
 
 document.getElementById('passwordChangeForm').addEventListener('submit', function(e) {
 e.preventDefault();
 
+const oldPassword = document.getElementById('oldPassword');
 const newPassword = document.getElementById('newPassword');
 const confirmPassword = document.getElementById('confirmPassword');
-const passwordChangeAlert = document.getElementById('passwordChangeAlert');
 
 let formIsValid = true;
+
+if (oldPassword.value.length < 8) {
+    alert('The password should be at least 8 characters long.');
+    formIsValid = false;
+    return;
+}
 
 if (newPassword.value.length < 8) {
     alert('The password should be at least 8 characters long.');
@@ -31,55 +27,11 @@ if (newPassword.value !== confirmPassword.value) {
     return;
 }
 
-if (formIsValid) {
-passwordChangeAlert.style.display = 'block';
-passwordChangeAlert.classList.add('show');
 
 // Reset the form to clear the input fields
 e.target.reset();
 
-// Hide the success alert after 10 seconds
-setTimeout(function() {
-    passwordChangeAlert.classList.remove('show');
-}, 10000); // 10 seconds = 10000 milliseconds
-}
 
-});
-
-document.getElementById('pictureChangeForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const pictureChangeAlert = document.getElementById('pictureChangeAlert');
-    const fileInput = document.getElementById('customFile');
-    const profilePicture = document.getElementById('profilePicture');
-
-    if (fileInput.files && fileInput.files[0]) {
-const reader = new FileReader();
-
-reader.onload = function(e) {
-    const imageDataUrl = e.target.result;
-    localStorage.setItem('profilePicture', imageDataUrl); // save to local storage
-    profilePicture.src = imageDataUrl; // update the image
-}
-
-reader.readAsDataURL(fileInput.files[0]);
-
-pictureChangeAlert.style.display = 'block';
-pictureChangeAlert.classList.add('show');
-
-// Hide the success alert after 10 seconds
-setTimeout(function() {
-    pictureChangeAlert.classList.remove('show');
-}, 10000); // 10 seconds = 10000 milliseconds
-
-// Reset the file input field and label
-fileInput.value = ""; // Reset the input
-$('.custom-file-label').html("Choose file"); // Reset the label
-}
-
-
-
-    pictureChangeAlert.style.display = 'block';
 });
 
 
@@ -105,4 +57,12 @@ button.addEventListener('click', (event) => {
 function goBack() {
     window.history.back();
 }
+$(document).ready(function() {
+    console.log("Document is ready");
+
+    $("#changePasswordButton").click(function(e) {
+        console.log("Change password button clicked");
+        e.preventDefault();
+    });
+});
 

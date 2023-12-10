@@ -6,33 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/style/contactstyle.css">
-    <script src="static/script/contactscript.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/contactstyle.css') }}">
+    <script src="{{ url_for('static', filename='script/contactscript.js') }}"></script>
 
 </head>
 
 <body>
-    <a href="javascript:history.back()" class="btn btn-secondary back-btn">Back</a>
+    <a href="javascript:history.back()" id="back-btn" class="btn btn-secondary back-btn">Back</a>
     <div class="contact-container">
         <h2>Contact Us</h2>
-        <form id="contactForm"> 
+        <form action="/contact" method="post"> 
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="c_name" class="form-control" placeholder="Enter your name" required pattern="^[a-zA-Z\s]+$">
+                <input type="text" id="c_name" name="c_name" class="form-control" placeholder="Enter your name" required="required" pattern="^[a-zA-Z\s]+$">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="c_email" class="form-control" placeholder="Enter your email" required pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
+                <input type="email" id="c_email" name="c_email" class="form-control" placeholder="Enter your email" required="required" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$">
             </div>
             <div class="form-group">
                 <label for="message">Message</label>
-                <textarea id="c_message" class="form-control" rows="5" placeholder="Your message here" required></textarea>
+                <!-- <input type="text" id="c_message" name="c_message" class="form-control" placeholder="Message" required="required" aria-rowspan="15px"> -->
+                <textarea id="c_message" name="c_message" class="form-control" rows="5" placeholder="Your message here" required="required"></textarea>
             </div>
-            <button type="button" class="btn btn-primary" id="submitButton">Submit</button>
-        </form> 
+            <button type="submit" class="btn btn-primary" id="submitButton" onclick="sendMsg()"> Submit</button>
+            <br>
+            <br>
+
+                <div class="message-box rounded p-3  bg-white shadow-sm">
+                 <h4 id="msg">hello</h4>
+                </div>
+        </form>
+        
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+   
+
 </body>
 </html>

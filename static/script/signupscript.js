@@ -33,5 +33,18 @@ return;
 alert('Account Created for ' + username + '!');
 
 // Redirect the user to another page
-window.location.href = "user";
+window.location.href = "/user";
 }
+
+// Function to remove alert messages after 15 seconds
+function removeAlerts() {
+    var alertMessages = document.querySelectorAll('.alert');
+    alertMessages.forEach(function (message) {
+        setTimeout(function () {
+            message.style.display = 'none';
+        }, 15000); // 15 seconds (15000 milliseconds)
+    });
+}
+
+// Call the function when the page is loaded
+window.addEventListener('load', removeAlerts);

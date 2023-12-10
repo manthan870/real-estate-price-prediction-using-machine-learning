@@ -6,32 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="static/style/signupstyle.css">
-    <script src="static/script/signupscript.js" defer></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/signupstyle.css') }}">
+    <script src="{{ url_for('static', filename='script/signupscript.js') }}"></script>
 
 </head>
 
 <body>
-<form id="signup_form" action="{{url_for('signup')}}" method="post">
+
     <div class="login-container">
         <h2>Sign Up</h2>
-        <input type="text" id="signupUsername" name="username" class="login-input" placeholder="Username" required>
-        <input type="text" id="name" name="name" class="login-input" placeholder="Name" required pattern="[a-zA-Z\s]+">
-        <input type="email" id="email" name="email" class="login-input" placeholder="Email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+        <form action="/signup" method="POST">
 
-        <!-- Password input with toggle -->
-        <div class="password-wrapper">
-            <input type="password" id="password" name="password" class="login-input" placeholder="Password" required pattern=".{8,}">
-            <span class="toggle-password" onclick="togglePasswordVisibility()">👁</span>
-        </div>
+            <input type="text" id="signupUsername" name="signupUsername" class="login-input" placeholder="Username" required>
 
-        <input type="password" id="confirmPassword" name="c_password" class="login-input" placeholder="Confirm Password" required>
-        <button class="login-btn" id="create_button" onclick="createAccount()">Create Account</button>
+            <input type="text" id="name" name="name" class="login-input" placeholder="Name" required pattern="[a-zA-Z\s]+">
+
+            <input type="email" id="email" name="email" class="login-input" placeholder="Email" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}">
+
+            <!-- Password input with toggle -->
+            <div class="password-wrapper">
+                <input type="password" id="password" name="password" class="login-input" placeholder="Password" required pattern=".{8,}">
+                <span class="toggle-password" onclick="togglePasswordVisibility()">👁</span>
+            </div>
+
+            <input type="password" id="confirmPassword" name="confirmPassword" class="login-input" placeholder="Confirm Password" required>
+
+            <button class="login-btn" id="create_button" type="submit">Create Account</button>
+
+        </form>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="alert-messages">
+                {% for message in messages %}
+                    <div class="alert alert-{{ message[1] }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
     </div>
-</form>
+
     <a class="btn btn-primary back-btn" onclick="window.history.back();">Back</a>
 
-    
+
+
 
 </body>
 

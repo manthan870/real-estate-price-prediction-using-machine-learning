@@ -1,6 +1,7 @@
+<!-- dashboard.html -->
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,36 +11,24 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="style/dashboardstyle.css">
-    <script src="script/dashboardscript.js" defer></script>
-
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style/dashboardstyle.css') }}">
+    <script src="{{ url_for('static', filename='script/dashscript.js') }}"></script>
 </head>
-
-
 <body class="bg-light">
-
     <button class="btn btn-primary back-button" onclick="goBack()">Back</button>
-
-
     <div class="container mt-5">
         <!-- Profile Photo -->
-        <div class="text-center mb-4">
-            <img src="profile.jpg" alt="User's profile picture" id="profilePicture" class="rounded-circle" width="150">
-        </div>
-
+        
         <div class="row">
             <!-- Sidebar with tabs navigation -->
             <div class="col-md-3">
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab">Profile</a>
-                    <a class="list-group-item list-group-item-action" id="list-activity-list" data-toggle="list" href="#list-activity" role="tab">Recent Activity</a>
+
                     <a class="list-group-item list-group-item-action" id="list-password-list" data-toggle="list" href="#list-password" role="tab">Change Password</a>
-                    <a class="list-group-item list-group-item-action" id="list-picture-list" data-toggle="list" href="#list-picture" role="tab">Change Profile Picture</a>
-                    <a class="list-group-item list-group-item-action" id="logout" href="index.html">Logout</a>
+                    <a class="list-group-item list-group-item-action" id="logout" href="{{ url_for('logout') }}">Logout</a>
                 </div>
             </div>
-
             <!-- Main Content with tabs content -->
             <div class="col-md-9">
                 <div class="tab-content" id="nav-tabContent">
@@ -48,92 +37,29 @@
                         <div class="card">
                             <div class="card-header">Profile Details</div>
                             <div class="card-body">
-                                <p id="p_name"><strong>Name:</strong> John Doe</p>
-                                <p id="p_email"><strong>Email:</strong> johndoe@example.com</p>
-                                <p id="p_joined"><strong>Joined:</strong> January 1, 2022</p>
+                                <p id="p_name"><strong>Name:</strong> {{ user_info.name }}</p>
+                                <p id="p_email"><strong>Email:</strong> {{ user_info.email }}</p>
+                                <p id="p_joined"><strong>Joined:</strong> {{ user_info.created_at.strftime('%B %d, %Y') }}</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Recent Activity Content -->
-                    <div class="tab-pane fade" id="list-activity" role="tabpanel">
-                        <div class="card">
-                            <div class="card-header">Recent Activity</div>
-                            <div class="card-body">
-                                <ul>
-                                    <li id="logged">Logged in at 2:30 PM</li>
-                                    <li id="update">Updated profile picture</li>
-                                    <li id="changed_p">Changed password</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
+                 
                     <!-- Change Password Content -->
-                    <div class="tab-pane fade" id="list-password" role="tabpanel">
-                        <div class="card">
-                            <div class="card-header">Change Password</div>
-                            <div class="card-body">
-                                <form id="passwordChangeForm">
-                                    <div class="form-group">
-                                        <label for="oldPassword">Previous Password</label>
-                                        <input type="password" class="form-control" id="oldPassword" placeholder="Enter previous password">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="newPassword">New Password</label>
-                                        <div class="input-group">
-                                            <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary toggle-password" type="button">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="confirmPassword">Confirm New Password</label>
-                                        <div class="input-group">
-                                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary toggle-password" type="button">
-                                                    <i class="fa fa-eye"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <button type="submit" class="btn btn-primary" id="changePasswordButton">Change Password</button>
-                                </form>
-                                <div class="alert alert-success mt-3" id="passwordChangeAlert" role="alert" style="display: none;">
-                                    Password changed successfully!
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Change Profile Picture Content -->
-                    <div class="tab-pane fade" id="list-picture" role="tabpanel">
-                        <div class="card">
-                            <div class="card-header">Change Profile Picture</div>
-                            <div class="card-body">
-                                <form id="pictureChangeForm">
-                                    <div class="custom-file mb-3">
-                                        <input type="file" class="custom-file-input" id="customFile">
-                                        <label class="custom-file-label" for="customFile">Choose file</label>
-                                    </div>
-                                    <button type="submit" is="upload_pic" class="btn btn-primary">Upload New Picture</button>
-                                </form>
-                                <div class="alert alert-success mt-3" id="pictureChangeAlert" role="alert" style="display: none;">
-                                    Profile picture updated successfully!
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div class="tab-pane fade" id="list-password" role="tabpanel">
+    <div class="card">
+        <div class="card-header">Change Password</div>
+        <div class="card-body">
+            <form id="passwordChangeForm" method="POST">
+                
+                <a href="change_password"><button type="button" class="btn btn-primary" id="changePasswordButton">Click Here! To Change Password!</button></a>
+            </form>
+        </div>
+    </div>
+</div>
+
                 </div>
             </div>
         </div>
     </div>
-
-    
 </body>
 </html>
