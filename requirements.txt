@@ -4,7 +4,6 @@ gunicorn
 seaborn
 Flask-SQLAlchemy
 Flask-Bcrypt
-smtplib
 pandas
 numpy
 matplotlib
